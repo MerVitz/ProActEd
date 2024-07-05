@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/inbox_styles.css' %}">
+</head>
+<body>
+    <h1>Inbox</h1>
+    <div id="inbox-container">
+        <div id="inbox-messages">
+            <h3>Chats</h3>
+            <ul class="chat-list">
+                {% for user in users %}
+                    <div class="user">
+                        <li><a href="{% url 'chat' user.id %}">{{ user.username }}</a></li>
+                        {% if user.has_new_messages %}
+                            <span class="new-message-dot"></span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

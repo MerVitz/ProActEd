@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/custom.css' %}" />
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+<script src="{% static 'js/custom_sidebar.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+<header id="header">
+    <div id="branding">
+        {% block branding %}
+        <div id="site-name">
+            <img src="{% static 'academia_app/logo.png' %}" alt="proacted_Logo" class="custom-logo">
+            <div class="header-texts">
+                {% if request.user.is_superuser %}
+                <a href="{% url 'admin:index' %}">Super Admin Dashboard</a>
+                {% else %}
+                <a href="{% url 'admin:index' %}">Staff Dashboard</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+
+    <div class="header-right-content">
+        {% if not user.is_anonymous %}
+            {% include "admin/color_theme_toggle.html" %}
+        {% endif %}
+
+        <div class="custom-welcome-message">
+            Welcome, {% if request.user.first_name %}{{ request.user.first_name }}{% else %}{{ request.user.username }}{% endif %}
+        </div>
+    </div>
+    <!-- Custom Sidebar Here -->
+</header>
+<div id="footer">
+    <p>© 2024 AIacademia Management System. All rights reserved.</p>
+</div>
+{% endblock %}
+{% block user-tools %}{% endblock %}
+{% block nav-global %}{% endblock %}

@@ -1,136 +1,183 @@
- /* Styles for the navigation menu */
- .navigation-menu {
-    position: fixed;
+/* Updated CSS */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle, #e6e6fa, #f5f5f5, #d3d3d3, #a8a8a8); 
+    text-align: center;
+}
+
+.header {
+    background-color: #020225;
+    color: #FFDB58;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 1000; 
+    overflow: hidden; 
+}
+
+.header:before {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    background-color: #007bff;
-    color: #fff;
-    padding: 5px 2px;
-    text-align: right;
-    margin-bottom: auto;
-    z-index: 1000;
-}
-.navigation-menu h1 {
-    font-size: 20px;
-    color: black; 
-    text-align: center;
-}
-.navigation-menu a.logout-button {
-    color: #fff;
-    text-decoration: dotted;
-}
-/* Styles for the "welcome-admin" section */
-.search-student {
-    position: fixed;
-    background-color: #f0f0f0;
-    padding: 5px;
-    right: 0;
-    top: 75px;
-    left: 0;
-    text-align: center;
-    z-index: 1000;
-}
-.search-student button[type="submit"]:hover {
-    background-color: #0056b3;
+    width: 500px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(2, 2, 37, 0), rgba(2, 2, 37, 0.1));
+    z-index: 1;
 }
 
-/* Styles for the content section */
-/* .content {
-    float: left;
-    width: 80%;
-    padding: 0px;
-} */
-.content {
-    display: flex;/* Use Flexbox */
-    flex-direction: column; 
-    flex-wrap: wrap; /* Allow content to wrap to the next row if needed */
-    padding: 10px;
-    margin-top: 130px
-}
-.content-item {
-    flex: 1; /* Distribute space evenly among items */
-    margin: 10px; /* Add spacing between items */
-    padding: 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    text-align: center;
-    transition: transform 0.2s, background-color 0.2s, color 0.2s;
-}
-.content-item:hover {
-    transform: scale(1.05); /* Scale up slightly on hover */
-    background-color: rgba(175, 185, 195, 0.7);; /* Change background color on hover */
-    color: #fff; /* Change text color on hover */
-}
-.school-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
-    grid-gap: 10px; /* Add spacing between items */
-}
-.content-item a.school-button {
-    color: #007bff; /* Use a distinct color for school names */
-    font-weight: bold; /* Make school names bold for visibility */
-    text-decoration: none;
+.nav {
+    color: #0d0dd9;
+    text-align: end;
 }
 
-/* Styles for the footer */
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 0;
-    text-align: center;
-}
-
-.footer-content {
+.header nav {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: end;
 }
 
-.contact-info, .links, .copyright {
-    flex: 1;
-    padding: 10px;
-}
-
-.links ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex; /* Display list items horizontally */
-}
-
-.links li {
-    margin-right: 20px; /* Add spacing between list items */
-    margin-bottom: 10px;
-}
-
-.links li:last-child {
-    margin-right: 0; /* Remove spacing from the last item */
-}
-
-/* Make sure to adjust the styles to match your design preferences */
-@media (max-width: 768px) {
-    /* Adjust the number of columns for smaller screens (e.g., 2 columns) */
-    .school-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 480px) {
-    /* Adjust the number of columns for very small screens (e.g., 1 column) */
-    .school-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-  .options {
-    display: none;
-    /* list-style: none; */
-    padding: 0;
+.header h1 {
     margin: 0;
+    flex-grow: 1;
+    text-align: center;
 }
 
-.hover-container:hover .options {
-    display: block;
+.footer {
+    background-color: #020225;
+    color: #FFDB58;
+    padding: 5px 0;
+    text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom */
+    width: 100%;
+    position: relative; /* Ensure relative positioning for gradient pseudo-element */
+}
+
+.footer:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px; /* Width of the gradient opacity area */
+    height: 100%;
+    background: linear-gradient(to left, rgba(2, 2, 37, 0), rgba(2, 2, 37, 0.1)); /* Gradient background */
+    z-index: 1; /* Ensure it's below the content */
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #06063d;
+    padding: 20px 0;
+    position: fixed;
+    height: calc(100vh - 90px);
+    border-radius: 10px; 
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.8);
+    top: 90px; 
+    left: 0;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(6, 6, 61, 1), rgba(6, 6, 61, 0.7));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    
+}
+
+.sidebar ul {
+    list-style-type: none; /* Remove default list styling */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.sidebar ul li {
+    margin-bottom: 20px; /* Space between each list item */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.sidebar ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: rgb(57, 187, 242); 
+    padding: 15px 20px; /* Padding for each link */
+    display: flex; /* Make the link flex */
+    align-items: center; /* Center the icon and text vertically */
+    transition: transform 0.2s ease-in-out, background-color 0.2s, border 0.2s, box-shadow 0.2s; /* Smooth transition for effects */
+    border: 2px solid transparent; /* Initial transparent border */
+    border-radius: 15px; /* Rounded corners */
+}
+
+.sidebar ul li a i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 24px; /* Adjust icon size if necessary */
+}
+
+.sidebar ul li a:hover {
+    background-color: #686; /* Change background color on hover */
+    transform: scale(1.02); /* Enlarge the item */
+    animation: bounce 0.6s; /* Apply the bounce animation */
+    border: 2px solid #FFDB58; /* Add a border on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a slight shadow for a 3D effect */
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Make sidebar full width on small screens */
+        height: auto;
+        position: relative;
+    }
+    .sidebar ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }
 
 
-/* Add more specific styles for your content as needed */
+.content {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 100px; 
+}
+
+.container {
+    width: 60%;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.error-message {
+    color: #ff0000;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Notification dot */
+#inbox-notification {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    display: none; /* Hidden by default */
+}
